@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="noche">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dados de Casino</title>
+<meta name="description" content="Lanza uno o dos dados con animación de casino. Funciona sin conexión e instalable.">
+<meta name="theme-color" id="metaTheme" content="#060b18">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Dados">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+
+<div class="app">
+
+  <header class="top">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <span class="brand-die"></span>
+      </span>
+      <span class="brand-text">
+        <strong>Dados</strong>
+        <small id="netState">Mesa abierta</small>
+      </span>
+    </div>
+
+    <div class="top-actions">
+      <button id="btnSound" class="icon-btn" type="button" aria-pressed="true" title="Sonido" aria-label="Activar o desactivar sonido">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="spk" d="M4 9.5h3.2L12 5.6v12.8L7.2 14.5H4z"/><g class="waves"><path d="M15.4 9.2a4 4 0 0 1 0 5.6"/><path d="M17.9 6.7a7.5 7.5 0 0 1 0 10.6"/></g><g class="slash"><path d="M15.5 9.5l5 5m0-5l-5 5"/></g></svg>
+      </button>
+      <button id="btnInstall" class="icon-btn" type="button" title="Instalar app" aria-label="Instalar app" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11m0 0l-4-4m4 4l4-4"/><path d="M4.5 17v2.5h15V17"/></svg>
+      </button>
+      <button id="btnTheme" class="icon-btn theme-btn" type="button" title="Cambiar tema" aria-label="Cambiar tema">
+        <span class="theme-orb" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="switch" id="switch" role="tablist" aria-label="Cantidad de dados">
+    <span class="switch-thumb" aria-hidden="true"></span>
+    <button class="switch-btn is-active" type="button" role="tab" data-mode="two" aria-selected="true">2 dados</button>
+    <button class="switch-btn" type="button" role="tab" data-mode="one" aria-selected="false">1 dado</button>
+  </div>
+
+  <main class="table" id="table">
+    <div class="table-ring" aria-hidden="true"></div>
+    <div class="table-texture" aria-hidden="true"></div>
+
+    <div class="dice" id="dice">
+      <div class="die-slot" data-slot="0"><div class="die"><div class="die-face"></div></div><span class="die-shadow"></span></div>
+      <div class="die-slot" data-slot="1"><div class="die"><div class="die-face"></div></div><span class="die-shadow"></span></div>
+    </div>
+
+    <div class="flash" id="flash" aria-hidden="true"></div>
+    <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+
+    <div class="readout">
+      <span class="readout-label" id="readoutLabel">Total</span>
+      <output class="readout-total" id="total" aria-live="polite">0</output>
+      <span class="readout-detail" id="detail">Lanza para empezar</span>
+    </div>
+  </main>
+
+  <div class="controls">
+    <button id="btnRoll" class="roll-btn" type="button">
+      <span class="roll-ring" aria-hidden="true"></span>
+      <span class="roll-label">Lanzar</span>
+      <span class="roll-key" aria-hidden="true">espacio</span>
+    </button>
+    <button id="btnReset" class="ghost-btn" type="button">Reiniciar</button>
+  </div>
+
+  <section class="panel open">
+    <button class="panel-head" id="panelToggle" type="button" aria-expanded="true" aria-controls="panelBody">
+      <span>Historial y estadísticas</span>
+      <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+    </button>
+    <div class="panel-body" id="panelBody">
+      <div class="panel-inner">
+        <div class="history" id="history"></div>
+        <div class="stats" id="stats"></div>
+        <p class="panel-foot" id="panelFoot">0 tiradas</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="hint" id="hint" hidden></p>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
