@@ -1,4 +1,4 @@
-﻿var VERSION = 'dados-v1';
+﻿var VERSION = 'dados-v2';
 var ASSETS = [
   './',
   'index.html',

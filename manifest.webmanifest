@@ -2,7 +2,7 @@
   "name": "Dados de Casino",
   "short_name": "Dados",
   "description": "Lanza uno o dos dados con animación de casino. Funciona sin conexión.",
-  "id": "/dados-casino/",
+  "id": "./",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
