@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagina no encontrada</title>
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<style>
+  :root{--txt:#e9eefb;--txt2:#9aabc9;--gold:#e6c477;--line:#1e2b45;--surface:#0e1626}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:24px;text-align:center;
+    background:radial-gradient(900px 620px at 15% -12%,rgba(77,141,255,.28),transparent 62%),
+               linear-gradient(180deg,#080d1a 0%,#05080f 60%);
+    color:var(--txt);font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  }
+  .box{max-width:360px}
+  .die{
+    width:64px;height:64px;margin:0 auto 22px;border-radius:24%;
+    background:linear-gradient(152deg,#f8f3e6,#ddd3bc);
+    box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 0 0 1px rgba(0,0,0,.4),0 18px 30px -14px #000;
+    position:relative;
+  }
+  .die::before,.die::after{content:"";position:absolute;width:11px;height:11px;border-radius:50%;background:#0e1526}
+  .die::before{top:14px;left:14px}
+  .die::after{bottom:14px;right:14px}
+  h1{font-size:19px;font-weight:600;letter-spacing:.01em;margin-bottom:8px}
+  p{font-size:13.5px;line-height:1.55;color:var(--txt2);margin-bottom:24px}
+  a{
+    display:inline-block;padding:12px 22px;border-radius:14px;text-decoration:none;
+    background:linear-gradient(180deg,#f9e7b6,#e6c477 46%,#a8842f);color:#160f02;
+    font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    box-shadow:0 16px 30px -16px #000;
+  }
+  a:hover{filter:brightness(1.06)}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="die" aria-hidden="true"></div>
+    <h1>Esta mesa no existe</h1>
+    <p>La pagina que buscas no esta aqui. Vuelve a la mesa para lanzar los dados.</p>
+    <a href="./">Volver al juego</a>
+  </div>
+</body>
+</html>

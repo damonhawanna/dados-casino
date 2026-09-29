@@ -1,0 +1,50 @@
+name: Desplegar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Preparar el sitio
+        run: |
+          set -eu
+          # La app es estatica: el repositorio es el sitio.
+          # Se copia solo lo necesario a _site para no publicar
+          # .git, .github ni los ficheros de desarrollo.
+          rm -rf _site
+          mkdir -p _site/icons
+          cp index.html 404.html manifest.webmanifest sw.js _site/
+          cp -r css js _site/
+          # Iconos, pero sin el script de generacion (solo se usa en local).
+          cp icons/*.png icons/favicon.svg _site/icons/
+          # GitHub Pages aplica Jekyll por defecto; .nojekyll lo desactiva.
+          touch _site/.nojekyll
+          echo "Ficheros publicados:"
+          cd _site && find . -type f | sort
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
